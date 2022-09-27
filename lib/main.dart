@@ -12,8 +12,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'E-Palika',
       home: SplashScreen(),
+      // routes: {
+      //   '/': (context) => const SplashScreen(),
+      // },
     );
   }
 }
