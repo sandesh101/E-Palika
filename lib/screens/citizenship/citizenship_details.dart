@@ -1,3 +1,4 @@
+import 'package:e_palika/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -117,6 +118,24 @@ class CitizenshipDetails extends StatelessWidget {
                 ),
               ),
               // =======================Required Document Ends========================
+            ],
+          ),
+          const SizedBox(
+            height: 40,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: const [
+              Buttons(
+                buttonColor: Color(0xFFFFD460),
+                buttonText: 'Continue',
+                destText: '/',
+              ),
+              Buttons(
+                buttonColor: Color(0xFFEA5455),
+                buttonText: 'Cancel',
+                destText: '/',
+              ),
             ],
           ),
         ],
