@@ -13,7 +13,9 @@ class Buttons extends StatelessWidget {
         primary: const Color(0xFFFFD460),
         maximumSize: const Size(240, 150),
       ),
-      onPressed: () {},
+      onPressed: () {
+        Navigator.pushNamed(context, 'citizenship_details');
+      },
       child: Padding(
         padding: const EdgeInsets.all(10.0),
         child: Text(
