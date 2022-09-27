@@ -9,15 +9,6 @@ class CitizenshipDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFF2D4059),
-      // appBar: AppBar(
-      //   backgroundColor: const Color(0xFF2D4059),
-      //   elevation: 0.0,
-      //   leading: Image.asset(
-      //     'assets/images/eplogo.png',
-      //     height: 70,
-      //     width: 70,
-      //   ),
-      // ),
       body: Column(
         children: [
           Row(
