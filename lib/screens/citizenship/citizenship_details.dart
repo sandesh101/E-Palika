@@ -120,7 +120,7 @@ class CitizenshipDetails extends StatelessWidget {
               Buttons(
                 buttonColor: Color(0xFFFFD460),
                 buttonText: 'Continue',
-                destText: '/',
+                destText: 'citizenship_form',
               ),
               Buttons(
                 buttonColor: Color(0xFFEA5455),
