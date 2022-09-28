@@ -10,8 +10,7 @@ class BabyDetails extends StatefulWidget {
 
 class _BabyDetailsState extends State<BabyDetails> {
   final TextEditingController _userName = TextEditingController();
-  final TextEditingController _birthPlace = TextEditingController();
-  final TextEditingController _permanentAddress = TextEditingController();
+  final TextEditingController _weightAtBirth = TextEditingController();
   final TextEditingController _dateOfBirth = TextEditingController();
 
   String gender = 'Male';
@@ -55,7 +54,7 @@ class _BabyDetailsState extends State<BabyDetails> {
               Padding(
                 padding: const EdgeInsets.only(top: 8.0),
                 child: TextFormField(
-                  controller: _birthPlace,
+                  controller: _dateOfBirth,
                   decoration: InputDecoration(
                     fillColor: Colors.white,
                     filled: true,
@@ -136,7 +135,7 @@ class _BabyDetailsState extends State<BabyDetails> {
               Padding(
                 padding: const EdgeInsets.only(top: 8.0),
                 child: TextFormField(
-                  controller: _permanentAddress,
+                  controller: _weightAtBirth,
                   decoration: InputDecoration(
                     fillColor: Colors.white,
                     filled: true,

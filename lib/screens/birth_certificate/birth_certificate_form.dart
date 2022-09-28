@@ -1,4 +1,5 @@
 import 'package:e_palika/screens/birth_certificate/baby_details.dart';
+import 'package:e_palika/screens/birth_certificate/birth_address.dart';
 import 'package:flutter/material.dart';
 
 import '../citizenship/upload_photo.dart';
@@ -23,7 +24,7 @@ class _BirthRegistrationFormState extends State<BirthRegistrationForm> {
           state: currentStep > 1 ? StepState.complete : StepState.indexed,
           isActive: currentStep >= 1,
           title: const Text(''),
-          content: Container(),
+          content: const BirthAddress(),
         ),
         Step(
           isActive: currentStep >= 2,
