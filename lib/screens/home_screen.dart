@@ -40,7 +40,7 @@ class HomePage extends StatelessWidget {
               buttonColor: const Color(0xFFFFD460),
               buttonText: 'Birth Certificate',
               onClick: () => {
-                Navigator.pushNamed(context, '/'),
+                Navigator.pushNamed(context, 'birthcertificate_details'),
               },
             ),
           ],

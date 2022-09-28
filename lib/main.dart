@@ -1,3 +1,4 @@
+import 'package:e_palika/screens/birth_certificate/birth_certificate_details.dart';
 import 'package:e_palika/screens/citizenship/citizenship_details.dart';
 import 'package:e_palika/screens/citizenship/citizenship_form.dart';
 import 'package:e_palika/screens/splash_screen.dart';
@@ -21,6 +22,7 @@ class MyApp extends StatelessWidget {
         '/': (context) => const SplashScreen(),
         'citizenship_details': (context) => const CitizenshipDetails(),
         'citizenship_form': (context) => const CitizenshipForm(),
+        'birthcertificate_details': (context) => const BirthCertificateDetails()
       },
     );
   }
