@@ -24,7 +24,7 @@ class _BabyDetailsState extends State<BabyDetails> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Text(
-              'Fill Details',
+              'New Born Baby Details',
               style: GoogleFonts.poppins(fontSize: 20, color: Colors.white),
             ),
           ],
@@ -51,7 +51,7 @@ class _BabyDetailsState extends State<BabyDetails> {
                 ),
               ),
 
-              //===========Birth Place================
+              //===========Date of birth================
               Padding(
                 padding: const EdgeInsets.only(top: 8.0),
                 child: TextFormField(
@@ -62,7 +62,7 @@ class _BabyDetailsState extends State<BabyDetails> {
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    hintText: "Birth Place",
+                    hintText: "Date of Birth",
                     hintStyle: GoogleFonts.poppins(
                       fontSize: 16,
                       color: Colors.black,
@@ -132,7 +132,7 @@ class _BabyDetailsState extends State<BabyDetails> {
                 ),
               ),
 
-              //===========Permanent Address================
+              //===========Weight at birth================
               Padding(
                 padding: const EdgeInsets.only(top: 8.0),
                 child: TextFormField(
@@ -143,28 +143,7 @@ class _BabyDetailsState extends State<BabyDetails> {
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    hintText: "Permanent Address",
-                    hintStyle: GoogleFonts.poppins(
-                      fontSize: 16,
-                      color: Colors.black,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                ),
-              ),
-
-              //===========Date of Birth================
-              Padding(
-                padding: const EdgeInsets.only(top: 8.0),
-                child: TextFormField(
-                  controller: _dateOfBirth,
-                  decoration: InputDecoration(
-                    fillColor: Colors.white,
-                    filled: true,
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    hintText: "Date of Birth",
+                    hintText: "Weight at Birth",
                     hintStyle: GoogleFonts.poppins(
                       fontSize: 16,
                       color: Colors.black,
