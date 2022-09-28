@@ -116,16 +116,20 @@ class CitizenshipDetails extends StatelessWidget {
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: const [
+            children: [
               Buttons(
-                buttonColor: Color(0xFFFFD460),
+                buttonColor: const Color(0xFFFFD460),
                 buttonText: 'Continue',
-                destText: 'citizenship_form',
+                onClick: () => {
+                  Navigator.pushNamed(context, 'citizenship_form'),
+                },
               ),
               Buttons(
-                buttonColor: Color(0xFFEA5455),
+                buttonColor: const Color(0xFFEA5455),
                 buttonText: 'Cancel',
-                destText: '/',
+                onClick: () => {
+                  Navigator.pushNamed(context, '/'),
+                },
               ),
             ],
           ),

@@ -26,18 +26,22 @@ class HomePage extends StatelessWidget {
             const SizedBox(
               height: 70,
             ),
-            const Buttons(
-              buttonColor: Color(0xFFFFD460),
+            Buttons(
+              buttonColor: const Color(0xFFFFD460),
               buttonText: 'Citizenship',
-              destText: 'citizenship_details',
+              onClick: () => {
+                Navigator.pushNamed(context, 'citizenship_details'),
+              },
             ),
             const SizedBox(
               height: 30,
             ),
-            const Buttons(
-              buttonColor: Color(0xFFFFD460),
+            Buttons(
+              buttonColor: const Color(0xFFFFD460),
               buttonText: 'Birth Certificate',
-              destText: '/',
+              onClick: () => {
+                Navigator.pushNamed(context, '/'),
+              },
             ),
           ],
         ),

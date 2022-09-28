@@ -3,15 +3,15 @@ import 'package:google_fonts/google_fonts.dart';
 
 class Buttons extends StatelessWidget {
   final String buttonText;
-  final String destText;
   final Color buttonColor;
+  final VoidCallback onClick;
 
-  const Buttons(
-      {Key? key,
-      required this.buttonText,
-      required this.destText,
-      required this.buttonColor})
-      : super(key: key);
+  const Buttons({
+    Key? key,
+    required this.buttonText,
+    required this.buttonColor,
+    required this.onClick,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,9 +20,7 @@ class Buttons extends StatelessWidget {
         primary: buttonColor,
         maximumSize: const Size(240, 150),
       ),
-      onPressed: () {
-        Navigator.pushNamed(context, destText);
-      },
+      onPressed: onClick,
       child: Padding(
         padding: const EdgeInsets.all(10.0),
         child: Text(

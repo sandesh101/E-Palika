@@ -1,4 +1,5 @@
 // import 'package:e_palika/widgets/custom_button.dart';
+import 'package:e_palika/screens/citizenship/upload_photo.dart';
 import 'package:e_palika/widgets/citizenship_parent_details.dart';
 import 'package:e_palika/widgets/citizenship_user_details.dart';
 import 'package:flutter/material.dart';
@@ -28,7 +29,7 @@ class _CitizenshipFormState extends State<CitizenshipForm> {
         Step(
           isActive: currentStep >= 2,
           title: const Text(''),
-          content: Container(),
+          content: const PickImage(),
         ),
       ];
 
