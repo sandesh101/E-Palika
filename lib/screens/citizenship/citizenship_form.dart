@@ -1,4 +1,5 @@
 // import 'package:e_palika/widgets/custom_button.dart';
+import 'package:e_palika/widgets/citizenship_parent_details.dart';
 import 'package:e_palika/widgets/citizenship_user_details.dart';
 import 'package:flutter/material.dart';
 
@@ -20,11 +21,10 @@ class _CitizenshipFormState extends State<CitizenshipForm> {
           content: const CitizenUserDetails(),
         ),
         Step(
-          state: currentStep > 1 ? StepState.complete : StepState.indexed,
-          isActive: currentStep >= 1,
-          title: const Text(''),
-          content: Container(),
-        ),
+            state: currentStep > 1 ? StepState.complete : StepState.indexed,
+            isActive: currentStep >= 1,
+            title: const Text(''),
+            content: const CitizenParentDetails()),
         Step(
           isActive: currentStep >= 2,
           title: const Text(''),
