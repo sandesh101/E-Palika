@@ -1,3 +1,4 @@
+import 'package:e_palika/screens/birth_certificate/baby_details.dart';
 import 'package:flutter/material.dart';
 
 import '../citizenship/upload_photo.dart';
@@ -16,7 +17,7 @@ class _BirthRegistrationFormState extends State<BirthRegistrationForm> {
           state: currentStep > 0 ? StepState.complete : StepState.indexed,
           isActive: currentStep >= 0,
           title: const Text(''),
-          content: Container(),
+          content: const BabyDetails(),
         ),
         Step(
           state: currentStep > 1 ? StepState.complete : StepState.indexed,
@@ -58,7 +59,7 @@ class _BirthRegistrationFormState extends State<BirthRegistrationForm> {
           },
           onStepCancel: () {
             currentStep == 0
-                ? null
+                ? Navigator.of(context).pushNamed('home')
                 : setState(() {
                     currentStep -= 1;
                   });

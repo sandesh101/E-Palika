@@ -2,6 +2,7 @@ import 'package:e_palika/screens/birth_certificate/birth_certificate_details.dar
 import 'package:e_palika/screens/birth_certificate/birth_certificate_form.dart';
 import 'package:e_palika/screens/citizenship/citizenship_details.dart';
 import 'package:e_palika/screens/citizenship/citizenship_form.dart';
+import 'package:e_palika/screens/home_screen.dart';
 import 'package:e_palika/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -21,6 +22,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => const SplashScreen(),
+        'home': (context) => const HomePage(),
         'citizenship_details': (context) => const CitizenshipDetails(),
         'citizenship_form': (context) => const CitizenshipForm(),
         'birthcertificate_details': (context) =>

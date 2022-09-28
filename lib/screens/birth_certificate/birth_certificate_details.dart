@@ -33,7 +33,7 @@ class BirthCertificateDetails extends StatelessWidget {
               ),
               const Divider(
                 indent: 8,
-                endIndent: 300,
+                endIndent: 150,
                 color: Color(0xFFFFD460),
                 thickness: 3.0,
               ),
