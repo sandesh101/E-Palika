@@ -60,7 +60,7 @@ class _CitizenshipFormState extends State<CitizenshipForm> {
           },
           onStepCancel: () {
             currentStep == 0
-                ? null
+                ? Navigator.of(context).pushNamed('home')
                 : setState(() {
                     currentStep -= 1;
                   });
