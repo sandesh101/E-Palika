@@ -30,7 +30,7 @@ class _PickImageState extends State<PickImage> {
             buttonText: 'Ok',
             buttonColor: const Color(0xFFEA5455),
             onClick: () {
-              Navigator.of(context).pop();
+              Navigator.of(context).pushNamed('upload_photo');
             },
           )
         ],
