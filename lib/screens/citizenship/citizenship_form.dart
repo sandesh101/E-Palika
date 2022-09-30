@@ -13,6 +13,12 @@ class CitizenshipForm extends StatefulWidget {
 }
 
 class _CitizenshipFormState extends State<CitizenshipForm> {
+  // ==> Code to upload data to database <==
+
+  insertRecord() {}
+
+  // ==> Code to upload data to database <==
+
   int currentStep = 0;
   List<Step> getSteps() => [
         Step(
@@ -51,6 +57,7 @@ class _CitizenshipFormState extends State<CitizenshipForm> {
 
             if (isLastStep) {
               //Server Code to send data to database
+              insertRecord();
               // print("Completed");
             } else {
               setState(() {
