@@ -9,10 +9,10 @@ class CitizenUserDetails extends StatefulWidget {
 }
 
 class _CitizenUserDetailsState extends State<CitizenUserDetails> {
-  final TextEditingController _userName = TextEditingController();
-  final TextEditingController _birthPlace = TextEditingController();
-  final TextEditingController _permanentAddress = TextEditingController();
-  final TextEditingController _dateOfBirth = TextEditingController();
+  final TextEditingController userName = TextEditingController();
+  final TextEditingController birthPlace = TextEditingController();
+  final TextEditingController permanentAddress = TextEditingController();
+  final TextEditingController dateOfBirth = TextEditingController();
 
   String gender = 'Male';
 
@@ -35,7 +35,7 @@ class _CitizenUserDetailsState extends State<CitizenUserDetails> {
             children: [
               //==========Full Name================
               TextFormField(
-                controller: _userName,
+                controller: userName,
                 decoration: InputDecoration(
                   fillColor: Colors.white,
                   filled: true,
@@ -55,7 +55,7 @@ class _CitizenUserDetailsState extends State<CitizenUserDetails> {
               Padding(
                 padding: const EdgeInsets.only(top: 8.0),
                 child: TextFormField(
-                  controller: _birthPlace,
+                  controller: birthPlace,
                   decoration: InputDecoration(
                     fillColor: Colors.white,
                     filled: true,
@@ -136,7 +136,7 @@ class _CitizenUserDetailsState extends State<CitizenUserDetails> {
               Padding(
                 padding: const EdgeInsets.only(top: 8.0),
                 child: TextFormField(
-                  controller: _permanentAddress,
+                  controller: permanentAddress,
                   decoration: InputDecoration(
                     fillColor: Colors.white,
                     filled: true,
@@ -157,7 +157,7 @@ class _CitizenUserDetailsState extends State<CitizenUserDetails> {
               Padding(
                 padding: const EdgeInsets.only(top: 8.0),
                 child: TextFormField(
-                  controller: _dateOfBirth,
+                  controller: dateOfBirth,
                   decoration: InputDecoration(
                     fillColor: Colors.white,
                     filled: true,

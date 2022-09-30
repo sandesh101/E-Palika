@@ -9,10 +9,10 @@ class CitizenParentDetails extends StatefulWidget {
 }
 
 class _CitizenParentDetailsState extends State<CitizenParentDetails> {
-  final TextEditingController _userName = TextEditingController();
-  final TextEditingController _birthPlace = TextEditingController();
-  final TextEditingController _permanentAddress = TextEditingController();
-  final TextEditingController _dateOfBirth = TextEditingController();
+  final TextEditingController fatherName = TextEditingController();
+  final TextEditingController fatherAddress = TextEditingController();
+  final TextEditingController motherName = TextEditingController();
+  final TextEditingController motherAddress = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +33,7 @@ class _CitizenParentDetailsState extends State<CitizenParentDetails> {
             children: [
               //==========Father Name================
               TextFormField(
-                controller: _userName,
+                controller: fatherName,
                 decoration: InputDecoration(
                   fillColor: Colors.white,
                   filled: true,
@@ -53,7 +53,7 @@ class _CitizenParentDetailsState extends State<CitizenParentDetails> {
               Padding(
                 padding: const EdgeInsets.only(top: 8.0),
                 child: TextFormField(
-                  controller: _birthPlace,
+                  controller: fatherAddress,
                   decoration: InputDecoration(
                     fillColor: Colors.white,
                     filled: true,
@@ -74,7 +74,7 @@ class _CitizenParentDetailsState extends State<CitizenParentDetails> {
               Padding(
                 padding: const EdgeInsets.only(top: 8.0),
                 child: TextFormField(
-                  controller: _permanentAddress,
+                  controller: motherName,
                   decoration: InputDecoration(
                     fillColor: Colors.white,
                     filled: true,
@@ -95,7 +95,7 @@ class _CitizenParentDetailsState extends State<CitizenParentDetails> {
               Padding(
                 padding: const EdgeInsets.only(top: 8.0),
                 child: TextFormField(
-                  controller: _dateOfBirth,
+                  controller: motherAddress,
                   decoration: InputDecoration(
                     fillColor: Colors.white,
                     filled: true,
