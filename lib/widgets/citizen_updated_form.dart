@@ -22,7 +22,7 @@ class _CitizenUpdatedState extends State<CitizenUpdated> {
   final TextEditingController _dateOfBirth = TextEditingController();
 
   Future<void> insertRecord() async {
-    print("Pressed");
+    // print("Pressed");
     if (_uName.text != "" ||
         _birthPlace.text != "" ||
         _permAddress.text != "" ||
@@ -80,7 +80,7 @@ class _CitizenUpdatedState extends State<CitizenUpdated> {
         ),
         backgroundColor: Colors.red,
       );
-      print("Please fill all field");
+      // print("Please fill all field");
     }
   }
 
