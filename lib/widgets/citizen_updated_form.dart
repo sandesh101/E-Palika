@@ -1,5 +1,9 @@
+import 'dart:convert';
+
+import 'package:e_palika/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:http/http.dart' as http;
 
 class CitizenUpdated extends StatefulWidget {
   const CitizenUpdated({Key? key}) : super(key: key);
@@ -13,6 +17,73 @@ class _CitizenUpdatedState extends State<CitizenUpdated> {
   String gender = 'Male';
 
   final TextEditingController _uName = TextEditingController();
+  final TextEditingController _birthPlace = TextEditingController();
+  final TextEditingController _permAddress = TextEditingController();
+  final TextEditingController _dateOfBirth = TextEditingController();
+
+  Future<void> insertRecord() async {
+    print("Pressed");
+    if (_uName.text != "" ||
+        _birthPlace.text != "" ||
+        _permAddress.text != "" ||
+        _dateOfBirth.text != "") {
+      // print("IF");
+      try {
+        String uri =
+            "http://192.168.1.68/e-palika_backend/citizenship/insert_record.php";
+
+        var res = await http.post(Uri.parse(uri), body: {
+          "fname": _uName.text,
+          "birthPlace": _birthPlace.text,
+          "gender": gender,
+          "permAddress": _permAddress.text,
+          "dob": _dateOfBirth.text,
+        });
+
+        var response = jsonDecode(res.body);
+
+        if (response["Success"] == "true") {
+          _uName.text = "";
+          _birthPlace.text = "";
+          _permAddress.text = "";
+          _dateOfBirth.text = "";
+          SnackBar(
+            content: Text(
+              "Data Inserted Successfully",
+              style: GoogleFonts.poppins(fontSize: 20, color: Colors.white),
+            ),
+            backgroundColor: Colors.green,
+          );
+        } else {
+          SnackBar(
+            content: Text(
+              'Error',
+              style: GoogleFonts.poppins(fontSize: 20, color: Colors.white),
+            ),
+            backgroundColor: Colors.red,
+          );
+        }
+      } catch (e) {
+        SnackBar(
+          content: Text(
+            'Error',
+            style: GoogleFonts.poppins(fontSize: 20, color: Colors.white),
+          ),
+          backgroundColor: Colors.red,
+        );
+      }
+    } else {
+      SnackBar(
+        content: Text(
+          'Please Fill All The Fields.',
+          style: GoogleFonts.poppins(fontSize: 20, color: Colors.white),
+        ),
+        backgroundColor: Colors.red,
+      );
+      print("Please fill all field");
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,7 +110,7 @@ class _CitizenUpdatedState extends State<CitizenUpdated> {
             ),
           ),
           TextFormField(
-            controller: _uName,
+            controller: _birthPlace,
             decoration: InputDecoration(
               fillColor: Colors.white,
               filled: true,
@@ -111,7 +182,7 @@ class _CitizenUpdatedState extends State<CitizenUpdated> {
             ),
           ),
           TextFormField(
-            controller: _uName,
+            controller: _permAddress,
             decoration: InputDecoration(
               fillColor: Colors.white,
               filled: true,
@@ -127,7 +198,7 @@ class _CitizenUpdatedState extends State<CitizenUpdated> {
             ),
           ),
           TextFormField(
-            controller: _uName,
+            controller: _dateOfBirth,
             decoration: InputDecoration(
               fillColor: Colors.white,
               filled: true,
@@ -142,6 +213,16 @@ class _CitizenUpdatedState extends State<CitizenUpdated> {
               ),
             ),
           ),
+
+          // =======>> Button to Store Data <<========
+
+          Buttons(
+            buttonText: 'Upload',
+            buttonColor: const Color(0xFFFFD460),
+            onClick: insertRecord,
+          ),
+
+          // =======>> Button to Store Data <<========
         ],
       ),
     );
