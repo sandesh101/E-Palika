@@ -50,6 +50,13 @@ class _PickImageState extends State<PickImage> {
         ? Image.file(_image!, height: 250, width: 250, fit: BoxFit.cover)
         : Column(
             children: [
+              Padding(
+                padding: const EdgeInsets.only(bottom: 8.0),
+                child: Text(
+                  'Upload Citizenship',
+                  style: GoogleFonts.poppins(color: Colors.white, fontSize: 20),
+                ),
+              ),
               Buttons(
                 buttonText: "Upload Image",
                 buttonColor: const Color(0xFFFFD460),
