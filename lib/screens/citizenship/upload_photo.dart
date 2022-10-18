@@ -53,7 +53,7 @@ class _PickImageState extends State<PickImage> {
               Padding(
                 padding: const EdgeInsets.only(bottom: 8.0),
                 child: Text(
-                  'Upload Citizenship',
+                  'Upload Citizenship of One Parent',
                   style: GoogleFonts.poppins(color: Colors.white, fontSize: 20),
                 ),
               ),

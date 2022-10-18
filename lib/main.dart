@@ -1,6 +1,7 @@
 import 'package:e_palika/screens/birth_certificate/birth_certificate_details.dart';
 import 'package:e_palika/screens/birth_certificate/birth_certificate_form.dart';
 import 'package:e_palika/screens/citizenship/citizenship_details.dart';
+import 'package:e_palika/screens/citizenship/citizenship_form.dart';
 // import 'package:e_palika/screens/citizenship/citizenship_form.dart';
 import 'package:e_palika/screens/citizenship/upload_photo.dart';
 import 'package:e_palika/screens/home_screen.dart';
@@ -27,7 +28,7 @@ class MyApp extends StatelessWidget {
         'home': (context) => const HomePage(),
         'upload_photo': (context) => const PickImage(),
         'citizenship_details': (context) => const CitizenshipDetails(),
-        'citizenship_form': (context) => const CitizenUpdated(),
+        'citizenship_form': (context) => const CitizenshipForm(),
         'birthcertificate_details': (context) =>
             const BirthCertificateDetails(),
         'birthregistration_form': (context) => const BirthRegistrationForm()
