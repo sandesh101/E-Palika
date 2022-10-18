@@ -18,7 +18,6 @@ class _CitizenshipFormState extends State<CitizenshipForm> {
     // if (CitizenUserDetails) {}
     // print("");
   }
-
   // ==> Code to upload data to database <==
 
   int currentStep = 0;
@@ -43,39 +42,41 @@ class _CitizenshipFormState extends State<CitizenshipForm> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color(0xFF2D4059),
-      body: Theme(
-        data: Theme.of(context).copyWith(
-          colorScheme: const ColorScheme.light(primary: Color(0xFFEA5455)),
-        ),
-        child: Stepper(
-          elevation: 0.0,
-          type: StepperType.horizontal,
-          steps: getSteps(),
-          currentStep: currentStep,
-          onStepContinue: () {
-            final isLastStep = currentStep == getSteps().length - 1;
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: const Color(0xFF2D4059),
+        body: Theme(
+          data: Theme.of(context).copyWith(
+            colorScheme: const ColorScheme.light(primary: Color(0xFFEA5455)),
+          ),
+          child: Stepper(
+            elevation: 0.0,
+            type: StepperType.horizontal,
+            steps: getSteps(),
+            currentStep: currentStep,
+            onStepContinue: () {
+              final isLastStep = currentStep == getSteps().length - 1;
 
-            if (isLastStep) {
-              //Server Code to send data to database
-              insertRecord();
-              // print("Completed");
-            } else {
-              setState(() {
-                currentStep += 1;
-              });
-            }
-          },
-          onStepCancel: () {
-            currentStep == 0
-                ? Navigator.of(context).pushNamed('home')
-                : setState(() {
-                    currentStep -= 1;
-                  });
-          },
+              if (isLastStep) {
+                //Server Code to send data to database
+                insertRecord();
+                // print("Completed");
+              } else {
+                setState(() {
+                  currentStep += 1;
+                });
+              }
+            },
+            onStepCancel: () {
+              currentStep == 0
+                  ? Navigator.of(context).pushNamed('home')
+                  : setState(() {
+                      currentStep -= 1;
+                    });
+            },
 
-          //====================Adding Custom Button==============================
+            //====================Adding Custom Button==============================
+          ),
         ),
       ),
     );
