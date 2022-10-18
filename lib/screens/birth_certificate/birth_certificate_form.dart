@@ -1,5 +1,3 @@
-// import 'package:e_palika/screens/birth_certificate/baby_details.dart';
-// import 'package:e_palika/screens/birth_certificate/birth_address.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
