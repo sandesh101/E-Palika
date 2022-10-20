@@ -1,3 +1,4 @@
+import 'package:e_palika/constants/colors.dart';
 import 'package:e_palika/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -27,7 +28,7 @@ class HomePage extends StatelessWidget {
               height: 70,
             ),
             Buttons(
-              buttonColor: const Color(0xFFFFD460),
+              buttonColor: AppColors.secondaryColor,
               buttonText: 'Citizenship',
               onClick: () => {
                 Navigator.pushNamed(context, 'citizenship_details'),
@@ -37,7 +38,7 @@ class HomePage extends StatelessWidget {
               height: 30,
             ),
             Buttons(
-              buttonColor: const Color(0xFFFFD460),
+              buttonColor: AppColors.secondaryColor,
               buttonText: 'Birth Certificate',
               onClick: () => {
                 Navigator.pushNamed(context, 'birthcertificate_details'),
