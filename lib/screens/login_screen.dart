@@ -41,14 +41,14 @@ class _LoginScreenState extends State<LoginScreen> {
               child: TextFormField(
                 controller: _emailController,
                 decoration: InputDecoration(
+                  prefixIcon: const Icon(
+                    Icons.mail,
+                    color: AppColors.accentColor,
+                  ),
                   fillColor: Colors.white,
                   filled: true,
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
-                  ),
-                  icon: const Icon(
-                    Icons.mail,
-                    color: AppColors.accentColor,
                   ),
                   hintText: "Enter Email ID",
                   hintStyle: GoogleFonts.poppins(
@@ -66,14 +66,14 @@ class _LoginScreenState extends State<LoginScreen> {
                 obscureText: true,
                 controller: _passwordController,
                 decoration: InputDecoration(
+                  prefixIcon: const Icon(
+                    Icons.lock,
+                    color: AppColors.accentColor,
+                  ),
                   fillColor: Colors.white,
                   filled: true,
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
-                  ),
-                  icon: const Icon(
-                    Icons.lock,
-                    color: AppColors.accentColor,
                   ),
                   hintText: "Password",
                   hintStyle: GoogleFonts.poppins(

@@ -20,7 +20,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
       backgroundColor: AppColors.primaryColor,
       appBar: AppBar(
         backgroundColor: AppColors.primaryColor,
-        automaticallyImplyLeading: false,
         title: const Text("SignUp"),
         centerTitle: true,
       ),
@@ -41,14 +40,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
               child: TextFormField(
                 controller: _emailController,
                 decoration: InputDecoration(
+                  prefixIcon: const Icon(
+                    Icons.mail,
+                    color: AppColors.accentColor,
+                  ),
                   fillColor: Colors.white,
                   filled: true,
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
-                  ),
-                  icon: const Icon(
-                    Icons.mail,
-                    color: AppColors.accentColor,
                   ),
                   hintText: "Enter Email ID",
                   hintStyle: GoogleFonts.poppins(
@@ -66,14 +65,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 obscureText: true,
                 controller: _passwordController,
                 decoration: InputDecoration(
+                  prefixIcon: const Icon(
+                    Icons.lock,
+                    color: AppColors.accentColor,
+                  ),
                   fillColor: Colors.white,
                   filled: true,
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
-                  ),
-                  icon: const Icon(
-                    Icons.lock,
-                    color: AppColors.accentColor,
                   ),
                   hintText: "Password",
                   hintStyle: GoogleFonts.poppins(
