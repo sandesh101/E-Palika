@@ -3,14 +3,14 @@ import 'package:e_palika/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+class SignUpScreen extends StatefulWidget {
+  const SignUpScreen({Key? key}) : super(key: key);
 
   @override
-  _LoginScreenState createState() => _LoginScreenState();
+  _SignUpScreenState createState() => _SignUpScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _SignUpScreenState extends State<SignUpScreen> {
   TextEditingController _emailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
 
@@ -21,7 +21,7 @@ class _LoginScreenState extends State<LoginScreen> {
       appBar: AppBar(
         backgroundColor: AppColors.primaryColor,
         automaticallyImplyLeading: false,
-        title: const Text("Login"),
+        title: const Text("SignUp"),
         centerTitle: true,
       ),
       body: Center(
@@ -29,7 +29,7 @@ class _LoginScreenState extends State<LoginScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              'Login',
+              'Create an Account',
               style: GoogleFonts.poppins(fontSize: 30, color: Colors.white),
             ),
             const SizedBox(
@@ -80,7 +80,7 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             const SizedBox(height: 20),
             Buttons(
-              buttonText: "Login",
+              buttonText: "Sign Up",
               buttonColor: AppColors.secondaryColor,
               onClick: () {},
             ),
@@ -91,15 +91,15 @@ class _LoginScreenState extends State<LoginScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  "Don't have an Account?",
+                  "Already have an Account?",
                   style: GoogleFonts.poppins(fontSize: 16, color: Colors.white),
                 ),
                 TextButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, "signup");
+                    Navigator.pushNamed(context, "login");
                   },
                   child: Text(
-                    'Sign Up',
+                    'Login',
                     style: GoogleFonts.poppins(
                         fontSize: 16, color: AppColors.accentColor),
                   ),
