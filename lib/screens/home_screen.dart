@@ -1,4 +1,5 @@
 import 'package:e_palika/constants/colors.dart';
+import 'package:e_palika/screens/login_screen.dart';
 import 'package:e_palika/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -44,6 +45,20 @@ class HomePage extends StatelessWidget {
                 Navigator.pushNamed(context, 'birthcertificate_details'),
               },
             ),
+            const SizedBox(
+              height: 30,
+            ),
+            Buttons(
+                buttonText: 'Go to Login',
+                buttonColor: AppColors.secondaryColor,
+                onClick: () => {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const LoginScreen(),
+                        ),
+                      )
+                    })
           ],
         ),
       ),
