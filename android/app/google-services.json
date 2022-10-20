@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "643503655236",
+    "project_id": "e-palika",
+    "storage_bucket": "e-palika.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:643503655236:android:a47b8ea3076242a8e72f11",
+        "android_client_info": {
+          "package_name": "com.example.e_palika"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "643503655236-lmsn4jcdui8k50gf37be5r7183s5561p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC50zDmXWGqXf0enZanbxv5TfcsSWPZU3A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "643503655236-lmsn4jcdui8k50gf37be5r7183s5561p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
