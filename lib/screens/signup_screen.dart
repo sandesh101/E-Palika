@@ -1,7 +1,10 @@
 import 'package:e_palika/constants/colors.dart';
 import 'package:e_palika/widgets/custom_button.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import '../widgets/toast_message.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({Key? key}) : super(key: key);
@@ -15,6 +18,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
   TextEditingController _passwordController = TextEditingController();
 
   bool isObscure = true;
+
+  final FirebaseAuth _auth = FirebaseAuth.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -112,7 +117,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
             Buttons(
               buttonText: "Sign Up",
               buttonColor: AppColors.secondaryColor,
-              onClick: () {},
+              onClick: () {
+                _auth
+                    .createUserWithEmailAndPassword(
+                        email: _emailController.text,
+                        password: _passwordController.text)
+                    .then((value) {
+                  ToastMessage().successMessage("User Registered");
+                }).onError((error, stackTrace) {
+                  ToastMessage().errorMessage(error.toString());
+                });
+              },
             ),
             const SizedBox(
               height: 30,
