@@ -2,11 +2,9 @@ import 'package:e_palika/screens/birth_certificate/birth_certificate_details.dar
 import 'package:e_palika/screens/birth_certificate/birth_certificate_form.dart';
 import 'package:e_palika/screens/citizenship/citizenship_details.dart';
 import 'package:e_palika/screens/citizenship/citizenship_form.dart';
-// import 'package:e_palika/screens/citizenship/citizenship_form.dart';
 import 'package:e_palika/screens/citizenship/upload_photo.dart';
 import 'package:e_palika/screens/home_screen.dart';
 import 'package:e_palika/screens/splash_screen.dart';
-import 'package:e_palika/widgets/citizen_updated_form.dart';
 import 'package:flutter/material.dart';
 
 void main() {
