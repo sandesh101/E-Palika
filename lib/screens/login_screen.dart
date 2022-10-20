@@ -124,6 +124,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         password: _passwordController.text)
                     .then((value) {
                   ToastMessage().successMessage("Login Successfull");
+                  Navigator.pushNamed(context, 'home');
                 }).onError((error, stackTrace) {
                   ToastMessage().errorMessage(error.toString());
                 });
