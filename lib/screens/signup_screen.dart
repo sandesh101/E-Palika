@@ -125,6 +125,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         password: _passwordController.text)
                     .then((value) {
                   ToastMessage().successMessage("User Registered");
+                  Navigator.pushNamed(context, 'home');
                 }).onError((error, stackTrace) {
                   ToastMessage().errorMessage(error.toString());
                 });
