@@ -46,7 +46,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  icon: const Icon(Icons.mail),
+                  icon: const Icon(
+                    Icons.mail,
+                    color: AppColors.accentColor,
+                  ),
                   hintText: "Enter Email ID",
                   hintStyle: GoogleFonts.poppins(
                     fontSize: 16,
@@ -68,7 +71,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  icon: const Icon(Icons.lock),
+                  icon: const Icon(
+                    Icons.lock,
+                    color: AppColors.accentColor,
+                  ),
                   hintText: "Password",
                   hintStyle: GoogleFonts.poppins(
                     fontSize: 16,
