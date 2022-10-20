@@ -124,20 +124,6 @@ class _BirthRegistrationFormState extends State<BirthRegistrationForm> {
                             style: GoogleFonts.poppins(
                                 fontSize: 16, color: Colors.white),
                           ),
-                          Radio(
-                              activeColor: const Color(0xFFEA5455),
-                              value: 'Others',
-                              groupValue: gender,
-                              onChanged: (value) {
-                                setState(() {
-                                  gender = value.toString();
-                                });
-                              }),
-                          Text(
-                            'Others',
-                            style: GoogleFonts.poppins(
-                                fontSize: 16, color: Colors.white),
-                          ),
                         ],
                       ),
                     ),
