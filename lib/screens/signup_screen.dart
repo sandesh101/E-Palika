@@ -14,6 +14,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
   TextEditingController _emailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
 
+  bool isObscure = true;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,9 +64,32 @@ class _SignUpScreenState extends State<SignUpScreen> {
               padding:
                   const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
               child: TextFormField(
-                obscureText: true,
+                obscureText: isObscure,
                 controller: _passwordController,
                 decoration: InputDecoration(
+                  suffixIcon: isObscure == true
+                      ? GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              isObscure = false;
+                            });
+                          },
+                          child: const Icon(
+                            Icons.visibility,
+                            color: AppColors.accentColor,
+                          ),
+                        )
+                      : GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              isObscure = true;
+                            });
+                          },
+                          child: const Icon(
+                            Icons.visibility_off,
+                            color: AppColors.accentColor,
+                          ),
+                        ),
                   prefixIcon: const Icon(
                     Icons.lock,
                     color: AppColors.accentColor,
