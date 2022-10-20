@@ -1,7 +1,9 @@
 import 'package:e_palika/constants/colors.dart';
 import 'package:e_palika/widgets/custom_button.dart';
+import 'package:e_palika/widgets/toast_message.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -15,6 +17,8 @@ class _LoginScreenState extends State<LoginScreen> {
   TextEditingController _passwordController = TextEditingController();
 
   bool isObscure = true;
+
+  final FirebaseAuth _auth = FirebaseAuth.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -113,7 +117,17 @@ class _LoginScreenState extends State<LoginScreen> {
             Buttons(
               buttonText: "Login",
               buttonColor: AppColors.secondaryColor,
-              onClick: () {},
+              onClick: () {
+                _auth
+                    .signInWithEmailAndPassword(
+                        email: _emailController.text,
+                        password: _passwordController.text)
+                    .then((value) {
+                  ToastMessage().successMessage("Login Successfull");
+                }).onError((error, stackTrace) {
+                  ToastMessage().errorMessage(error.toString());
+                });
+              },
             ),
             const SizedBox(
               height: 30,
