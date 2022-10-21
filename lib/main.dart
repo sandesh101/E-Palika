@@ -7,6 +7,7 @@ import 'package:e_palika/screens/home_screen.dart';
 import 'package:e_palika/screens/login_screen.dart';
 import 'package:e_palika/screens/signup_screen.dart';
 import 'package:e_palika/screens/splash_screen.dart';
+import 'package:e_palika/widgets/show_data_list.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 
@@ -37,6 +38,7 @@ class MyApp extends StatelessWidget {
         'birthregistration_form': (context) => const BirthRegistrationForm(),
         'signup': (context) => const SignUpScreen(),
         'login': (context) => const LoginScreen(),
+        'showList': (context) => const ShowDataList(),
       },
     );
   }

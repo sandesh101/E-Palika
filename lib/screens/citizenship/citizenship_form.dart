@@ -1,6 +1,9 @@
 import 'package:e_palika/screens/citizenship/upload_photo.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import '../../widgets/toast_message.dart';
 // import 'package:http/http.dart' as http;
 
 // ignore: must_be_immutable
@@ -12,6 +15,8 @@ class CitizenshipForm extends StatefulWidget {
 }
 
 class _CitizenshipFormState extends State<CitizenshipForm> {
+  final databaseRef = FirebaseDatabase.instance.ref('Citizenship');
+
   final TextEditingController userName = TextEditingController();
   final TextEditingController birthPlace = TextEditingController();
   final TextEditingController permanentAddress = TextEditingController();
@@ -24,9 +29,17 @@ class _CitizenshipFormState extends State<CitizenshipForm> {
   String gender = 'Male';
   // ==> Code to upload data to database <==
 
-  Future<void> insertRecord() async {
-    // if (CitizenUserDetails) {}
-    // print("");
+  final uid = DateTime.now().microsecondsSinceEpoch;
+
+  void insertRecord() {
+    databaseRef
+        .child(uid.toString())
+        .set({'id': uid.toString(), 'status': 'Uploaded'}).then((value) {
+      ToastMessage().successMessage('Successfully Uploaded');
+    }).onError((error, stackTrace) {
+      ToastMessage().errorMessage(error.toString());
+    });
+    Navigator.pushNamed(context, 'showList');
   }
   // ==> Code to upload data to database <==
 
@@ -53,6 +66,7 @@ class _CitizenshipFormState extends State<CitizenshipForm> {
                 child: Column(
                   children: [
                     //==========Full Name================
+
                     TextFormField(
                       controller: userName,
                       decoration: InputDecoration(
