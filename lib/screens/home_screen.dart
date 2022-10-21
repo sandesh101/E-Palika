@@ -1,5 +1,5 @@
 import 'package:e_palika/constants/colors.dart';
-import 'package:e_palika/screens/login_screen.dart';
+// import 'package:e_palika/screens/login_screen.dart';
 import 'package:e_palika/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -63,6 +63,22 @@ class _HomePageState extends State<HomePage> {
                   onClick: () => {
                     Navigator.pushNamed(context, 'birthcertificate_details'),
                   },
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                TextButton(
+                  onPressed: () {
+                    FirebaseAuth.instance.signOut();
+                    Navigator.pushNamed(context, 'login');
+                  },
+                  child: Text(
+                    'Sign Out',
+                    style: GoogleFonts.poppins(
+                      fontSize: 16,
+                      color: AppColors.accentColor,
+                    ),
+                  ),
                 ),
               ],
             )
