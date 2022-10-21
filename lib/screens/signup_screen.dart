@@ -22,6 +22,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
+  UserCredential? userCredential;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -118,8 +120,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
             Buttons(
               buttonText: "Sign Up",
               buttonColor: AppColors.secondaryColor,
-              onClick: () {
-                _auth
+              onClick: () async {
+                userCredential = await _auth
                     .createUserWithEmailAndPassword(
                         email: _emailController.text,
                         password: _passwordController.text)

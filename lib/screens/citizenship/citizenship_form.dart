@@ -1,5 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_palika/screens/citizenship/upload_photo.dart';
-import 'package:firebase_database/firebase_database.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+// import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -15,7 +17,10 @@ class CitizenshipForm extends StatefulWidget {
 }
 
 class _CitizenshipFormState extends State<CitizenshipForm> {
-  final databaseRef = FirebaseDatabase.instance.ref('Citizenship');
+  final fireStore = FirebaseFirestore.instance.collection('Citizenship');
+  final FirebaseAuth authUser = FirebaseAuth.instance;
+
+  // final databaseRef = FirebaseDatabase.instance.ref('Citizenship');
 
   final TextEditingController userName = TextEditingController();
   final TextEditingController birthPlace = TextEditingController();
@@ -27,19 +32,24 @@ class _CitizenshipFormState extends State<CitizenshipForm> {
   final TextEditingController motherAddress = TextEditingController();
 
   String gender = 'Male';
+
   // ==> Code to upload data to database <==
-
-  final uid = DateTime.now().microsecondsSinceEpoch;
-
   void insertRecord() {
-    databaseRef
-        .child(uid.toString())
-        .set({'id': uid.toString(), 'status': 'Uploaded'}).then((value) {
-      ToastMessage().successMessage('Successfully Uploaded');
-    }).onError((error, stackTrace) {
-      ToastMessage().errorMessage(error.toString());
-    });
-    Navigator.pushNamed(context, 'showList');
+    if (authUser.currentUser != null) {
+      String uid = authUser.currentUser!.uid.toString();
+      // print(uid);
+      fireStore.doc(uid).set({
+        'id': uid,
+        'name': userName.text.toString(),
+      }).then((value) {
+        ToastMessage().successMessage('Upload Successfull');
+        Navigator.pushNamed(context, 'showList');
+      }).onError((error, stackTrace) {
+        ToastMessage().errorMessage(error.toString());
+      });
+    }
+    // print("Clicked");
+    //====================
   }
   // ==> Code to upload data to database <==
 

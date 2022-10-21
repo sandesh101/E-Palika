@@ -32,7 +32,8 @@ class MyApp extends StatelessWidget {
         'home': (context) => const HomePage(),
         'upload_photo': (context) => const PickImage(),
         'citizenship_details': (context) => const CitizenshipDetails(),
-        'citizenship_form': (context) => const CitizenshipForm(),
+        'citizenship_form': (context) =>
+            const CitizenshipForm(), //citizenshipform
         'birthcertificate_details': (context) =>
             const BirthCertificateDetails(),
         'birthregistration_form': (context) => const BirthRegistrationForm(),

@@ -80,6 +80,22 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                 ),
+                const SizedBox(
+                  height: 20,
+                ),
+                TextButton(
+                  onPressed: () {
+                    // FirebaseAuth.instance.signOut();
+                    Navigator.pushNamed(context, 'showList');
+                  },
+                  child: Text(
+                    'Show List',
+                    style: GoogleFonts.poppins(
+                      fontSize: 16,
+                      color: AppColors.accentColor,
+                    ),
+                  ),
+                ),
               ],
             )
             // const SizedBox(
