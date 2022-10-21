@@ -19,7 +19,7 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: const Color(0xFF2D4059),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          // mainAxisAlignment: MainAxisAlignment.center,
           // crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Image.asset(
@@ -27,49 +27,59 @@ class _HomePageState extends State<HomePage> {
               height: 150,
               width: 200,
             ),
-            Text(
-              'Welcome ${FirebaseAuth.instance.currentUser?.email}',
-              style: GoogleFonts.poppins(
-                  fontSize: 20, color: AppColors.accentColor),
-            ),
-            Text(
-              'Our Services',
-              style: GoogleFonts.poppins(fontSize: 50, color: Colors.white),
-            ),
             const SizedBox(
-              height: 30,
+              height: 20,
             ),
-            Buttons(
-              buttonColor: AppColors.secondaryColor,
-              buttonText: 'Citizenship',
-              onClick: () => {
-                Navigator.pushNamed(context, 'citizenship_details'),
-              },
-            ),
-            const SizedBox(
-              height: 30,
-            ),
-            Buttons(
-              buttonColor: AppColors.secondaryColor,
-              buttonText: 'Birth Certificate',
-              onClick: () => {
-                Navigator.pushNamed(context, 'birthcertificate_details'),
-              },
-            ),
-            const SizedBox(
-              height: 30,
-            ),
-            Buttons(
-                buttonText: 'Go to Login',
-                buttonColor: AppColors.secondaryColor,
-                onClick: () => {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const LoginScreen(),
-                        ),
-                      )
-                    })
+            Column(
+              children: [
+                Text(
+                  'Welcome ${FirebaseAuth.instance.currentUser?.email}',
+                  style: GoogleFonts.poppins(
+                      fontSize: 20, color: AppColors.accentColor),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Text(
+                  'Our Services',
+                  style: GoogleFonts.poppins(fontSize: 50, color: Colors.white),
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+                Buttons(
+                  buttonColor: AppColors.secondaryColor,
+                  buttonText: 'Citizenship',
+                  onClick: () => {
+                    Navigator.pushNamed(context, 'citizenship_details'),
+                  },
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Buttons(
+                  buttonColor: AppColors.secondaryColor,
+                  buttonText: 'Birth Certificate',
+                  onClick: () => {
+                    Navigator.pushNamed(context, 'birthcertificate_details'),
+                  },
+                ),
+              ],
+            )
+            // const SizedBox(
+            //   height: 30,
+            // ),
+            // Buttons(
+            //     buttonText: 'Go to Login',
+            //     buttonColor: AppColors.secondaryColor,
+            //     onClick: () => {
+            //           Navigator.push(
+            //             context,
+            //             MaterialPageRoute(
+            //               builder: (context) => const LoginScreen(),
+            //             ),
+            //           )
+            //         })
           ],
         ),
       ),
