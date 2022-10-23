@@ -86,7 +86,7 @@ class _HomePageState extends State<HomePage> {
                 TextButton(
                   onPressed: () {
                     // FirebaseAuth.instance.signOut();
-                    Navigator.pushNamed(context, 'showList');
+                    Navigator.pushNamed(context, 'showBirthList');
                   },
                   child: Text(
                     'Show List',

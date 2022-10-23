@@ -1,12 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_palika/screens/citizenship/upload_photo.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-// import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../widgets/toast_message.dart';
-// import 'package:http/http.dart' as http;
 
 // ignore: must_be_immutable
 class CitizenshipForm extends StatefulWidget {
@@ -19,8 +17,6 @@ class CitizenshipForm extends StatefulWidget {
 class _CitizenshipFormState extends State<CitizenshipForm> {
   final fireStore = FirebaseFirestore.instance.collection('Citizenship');
   final FirebaseAuth authUser = FirebaseAuth.instance;
-
-  // final databaseRef = FirebaseDatabase.instance.ref('Citizenship');
 
   final TextEditingController userName = TextEditingController();
   final TextEditingController birthPlace = TextEditingController();
@@ -40,8 +36,23 @@ class _CitizenshipFormState extends State<CitizenshipForm> {
       // print(uid);
       fireStore.doc(uid).set({
         'id': uid,
-        'name': userName.text.toString(),
       }).then((value) {
+        FirebaseFirestore.instance
+            .collection('Citizenship')
+            .doc(uid)
+            .collection('ICitizenData')
+            .add({
+          'id': uid,
+          'name': userName.text.toString(),
+          'birthPlace': birthPlace.text.toString(),
+          'gender': gender,
+          'permAddress': permanentAddress.text.toString(),
+          'dob': dateOfBirth.text.toString(),
+          'fatherName': fatherName.text.toString(),
+          'fatherAddress': fatherAddress.text.toString(),
+          'motherName': motherName.text.toString(),
+          'motherAddress': motherAddress.text.toString(),
+        });
         ToastMessage().successMessage('Upload Successfull');
         Navigator.pushNamed(context, 'showList');
       }).onError((error, stackTrace) {

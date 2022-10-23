@@ -1,3 +1,6 @@
+import 'package:e_palika/widgets/toast_message.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -11,14 +14,37 @@ class BirthRegistrationForm extends StatefulWidget {
 }
 
 class _BirthRegistrationFormState extends State<BirthRegistrationForm> {
-  TextEditingController _userName = TextEditingController();
-  TextEditingController _weightAtBirth = TextEditingController();
-  TextEditingController _dateOfBirth = TextEditingController();
-  TextEditingController _districtName = TextEditingController();
-  TextEditingController _wardNumber = TextEditingController();
-  TextEditingController _municipalityAddress = TextEditingController();
+  final TextEditingController _userName = TextEditingController();
+  final TextEditingController _weightAtBirth = TextEditingController();
+  final TextEditingController _dateOfBirth = TextEditingController();
+  final TextEditingController _districtName = TextEditingController();
+  final TextEditingController _wardNumber = TextEditingController();
+  final TextEditingController _municipalityAddress = TextEditingController();
 
   String gender = 'Male';
+
+  final databseRef = FirebaseDatabase.instance.ref('BirthCertificate');
+  final auth = FirebaseAuth.instance;
+
+  void insertRecord() {
+    final uid = auth.currentUser!.uid;
+    final childId = DateTime.now().millisecondsSinceEpoch;
+    databseRef.child(uid).child(childId.toString()).set({
+      'id': uid,
+      'name': _userName.text,
+      'weight': _weightAtBirth.text,
+      'dob': _dateOfBirth.text,
+      'gender': gender,
+      'district': _districtName.text,
+      'wardnumber': _wardNumber.text,
+      'municipality': _municipalityAddress.text,
+    }).then((value) {
+      ToastMessage().successMessage('Successfully Uploaded');
+      Navigator.pushNamed(context, 'showBirthList');
+    }).onError((error, stackTrace) {
+      ToastMessage().errorMessage(error.toString());
+    });
+  }
 
   int currentStep = 0;
   List<Step> getSteps() => [
@@ -266,6 +292,7 @@ class _BirthRegistrationFormState extends State<BirthRegistrationForm> {
               if (isLastStep) {
                 //Server Code to send data to database
                 // print("Completed");
+                insertRecord();
               } else {
                 setState(() {
                   currentStep += 1;
