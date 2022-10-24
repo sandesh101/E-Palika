@@ -1,23 +1,20 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:e_palika/screens/citizenship/upload_photo.dart';
+// import 'package:e_palika/widgets/show_birth_data.dart';
+import 'package:e_palika/widgets/toast_message.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../widgets/toast_message.dart';
+import '../citizenship/upload_photo.dart';
 
-// ignore: must_be_immutable
 class CitizenshipForm extends StatefulWidget {
   const CitizenshipForm({Key? key}) : super(key: key);
 
   @override
-  State<CitizenshipForm> createState() => _CitizenshipFormState();
+  _CitizenshipFormState createState() => _CitizenshipFormState();
 }
 
 class _CitizenshipFormState extends State<CitizenshipForm> {
-  final fireStore = FirebaseFirestore.instance.collection('Citizenship');
-  final FirebaseAuth authUser = FirebaseAuth.instance;
-
   final TextEditingController userName = TextEditingController();
   final TextEditingController birthPlace = TextEditingController();
   final TextEditingController permanentAddress = TextEditingController();
@@ -29,54 +26,45 @@ class _CitizenshipFormState extends State<CitizenshipForm> {
 
   String gender = 'Male';
 
-  // ==> Code to upload data to database <==
+  final cdatabseRef = FirebaseDatabase.instance.ref('Citizenship');
+  final auth = FirebaseAuth.instance;
+
   void insertRecord() {
-    if (authUser.currentUser != null) {
-      String uid = authUser.currentUser!.uid.toString();
-      // print(uid);
-      fireStore.doc(uid).set({
-        'id': uid,
-      }).then((value) {
-        FirebaseFirestore.instance
-            .collection('Citizenship')
-            .doc(uid)
-            .collection('ICitizenData')
-            .add({
-          'id': uid,
-          'name': userName.text.toString(),
-          'birthPlace': birthPlace.text.toString(),
-          'gender': gender,
-          'permAddress': permanentAddress.text.toString(),
-          'dob': dateOfBirth.text.toString(),
-          'fatherName': fatherName.text.toString(),
-          'fatherAddress': fatherAddress.text.toString(),
-          'motherName': motherName.text.toString(),
-          'motherAddress': motherAddress.text.toString(),
-        });
-        ToastMessage().successMessage('Upload Successfull');
-        Navigator.pushNamed(context, 'showList');
-      }).onError((error, stackTrace) {
-        ToastMessage().errorMessage(error.toString());
-      });
-    }
-    // print("Clicked");
-    //====================
+    final uid = auth.currentUser!.uid;
+    final childId = DateTime.now().millisecondsSinceEpoch;
+    cdatabseRef.child(uid).child(childId.toString()).set({
+      'id': uid,
+      'name': userName.text,
+      'birthPlace': birthPlace.text,
+      'permanentAddress': permanentAddress.text,
+      'gender': gender,
+      'dob': dateOfBirth.text,
+      'fatherName': fatherAddress.text,
+      'fatherAddress': fatherAddress.text,
+      'motherName': motherName.text,
+      'motherAddress': motherAddress.text,
+    }).then((value) {
+      ToastMessage().successMessage('Successfully Uploaded');
+      Navigator.pushNamed(context, 'showList');
+    }).onError((error, stackTrace) {
+      ToastMessage().errorMessage(error.toString());
+    });
   }
-  // ==> Code to upload data to database <==
 
   int currentStep = 0;
   List<Step> getSteps() => [
         Step(
           state: currentStep > 0 ? StepState.complete : StepState.indexed,
           isActive: currentStep >= 0,
-          title: const Text('Applicant'),
+          title: const Text('Details'),
+          // content: const BabyDetails(),
           content: Column(
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Text(
-                    'Fill Details of Applicant',
+                    'Full Details of Applicant',
                     style:
                         GoogleFonts.poppins(fontSize: 20, color: Colors.white),
                   ),
@@ -87,7 +75,6 @@ class _CitizenshipFormState extends State<CitizenshipForm> {
                 child: Column(
                   children: [
                     //==========Full Name================
-
                     TextFormField(
                       controller: userName,
                       decoration: InputDecoration(
@@ -186,28 +173,7 @@ class _CitizenshipFormState extends State<CitizenshipForm> {
                       ),
                     ),
 
-                    //===========Permanent Address================
-                    Padding(
-                      padding: const EdgeInsets.only(top: 8.0),
-                      child: TextFormField(
-                        controller: permanentAddress,
-                        decoration: InputDecoration(
-                          fillColor: Colors.white,
-                          filled: true,
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          hintText: "Permanent Address",
-                          hintStyle: GoogleFonts.poppins(
-                            fontSize: 16,
-                            color: Colors.black,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                      ),
-                    ),
-
-                    //===========Date of Birth================
+                    //===========Birth Place================
                     Padding(
                       padding: const EdgeInsets.only(top: 8.0),
                       child: TextFormField(
@@ -219,6 +185,25 @@ class _CitizenshipFormState extends State<CitizenshipForm> {
                             borderRadius: BorderRadius.circular(10),
                           ),
                           hintText: "Date of Birth",
+                          hintStyle: GoogleFonts.poppins(
+                            fontSize: 16,
+                            color: Colors.black,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 8.0),
+                      child: TextFormField(
+                        controller: permanentAddress,
+                        decoration: InputDecoration(
+                          fillColor: Colors.white,
+                          filled: true,
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          hintText: "Permanent Address",
                           hintStyle: GoogleFonts.poppins(
                             fontSize: 16,
                             color: Colors.black,
@@ -364,8 +349,8 @@ class _CitizenshipFormState extends State<CitizenshipForm> {
 
               if (isLastStep) {
                 //Server Code to send data to database
-                insertRecord();
                 // print("Completed");
+                insertRecord();
               } else {
                 setState(() {
                   currentStep += 1;

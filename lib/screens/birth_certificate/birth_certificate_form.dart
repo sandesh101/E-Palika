@@ -1,3 +1,4 @@
+import 'package:e_palika/widgets/show_birth_data.dart';
 import 'package:e_palika/widgets/toast_message.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
