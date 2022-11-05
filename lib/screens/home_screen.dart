@@ -17,29 +17,23 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFF2D4059),
+      appBar: AppBar(
+        title: Text(
+          "E-Palika",
+          style: GoogleFonts.poppins(),
+        ),
+        centerTitle: true,
+        backgroundColor: AppColors.primaryColor,
+      ),
+      drawer: NavigationDrawer(),
       body: Center(
         child: Column(
           // mainAxisAlignment: MainAxisAlignment.center,
           // crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Image.asset(
-              'assets/images/eplogo.png',
-              height: 150,
-              width: 200,
-            ),
-            const SizedBox(
-              height: 20,
-            ),
             Column(
               children: [
-                Text(
-                  'Welcome ${FirebaseAuth.instance.currentUser?.email}',
-                  style: GoogleFonts.poppins(
-                      fontSize: 20, color: AppColors.accentColor),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
+                const SizedBox(height: 40),
                 Text(
                   'Our Services',
                   style: GoogleFonts.poppins(fontSize: 50, color: Colors.white),
@@ -55,7 +49,7 @@ class _HomePageState extends State<HomePage> {
                   },
                 ),
                 const SizedBox(
-                  height: 20,
+                  height: 30,
                 ),
                 Buttons(
                   buttonColor: AppColors.secondaryColor,
@@ -80,41 +74,85 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                 ),
-                const SizedBox(
-                  height: 20,
-                ),
-                TextButton(
-                  onPressed: () {
-                    // FirebaseAuth.instance.signOut();
-                    Navigator.pushNamed(context, 'showBirthList');
-                  },
-                  child: Text(
-                    'Show List',
-                    style: GoogleFonts.poppins(
-                      fontSize: 16,
-                      color: AppColors.accentColor,
-                    ),
-                  ),
-                ),
               ],
             )
-            // const SizedBox(
-            //   height: 30,
-            // ),
-            // Buttons(
-            //     buttonText: 'Go to Login',
-            //     buttonColor: AppColors.secondaryColor,
-            //     onClick: () => {
-            //           Navigator.push(
-            //             context,
-            //             MaterialPageRoute(
-            //               builder: (context) => const LoginScreen(),
-            //             ),
-            //           )
-            //         })
           ],
         ),
       ),
+    );
+  }
+}
+
+class NavigationDrawer extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Drawer(
+      backgroundColor: AppColors.primaryColor,
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            buildHeader(context),
+            buildMenuItem(context),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget buildHeader(BuildContext context) {
+    return Container(
+      color: AppColors.secondaryColor,
+      padding: EdgeInsets.only(
+          top: 24 + MediaQuery.of(context).padding.top, bottom: 24),
+      child: Column(
+        children: [
+          Text(
+            'Hey ${FirebaseAuth.instance.currentUser?.email}',
+            style:
+                GoogleFonts.poppins(fontSize: 20, color: AppColors.accentColor),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget buildMenuItem(BuildContext context) {
+    return Column(
+      children: [
+        ListTile(
+          leading: const Icon(
+            Icons.arrow_right,
+            size: 40,
+            color: Colors.black,
+          ),
+          title: Text(
+            'Show Citizenship List',
+            style:
+                GoogleFonts.poppins(color: AppColors.accentColor, fontSize: 18),
+          ),
+          onTap: () {
+            Navigator.pop(context);
+            Navigator.pushNamed(context, 'showList');
+          },
+        ),
+        ListTile(
+          leading: const Icon(
+            Icons.arrow_right,
+            size: 40,
+            color: Colors.black,
+          ),
+          title: Text(
+            'Show Birth List',
+            style:
+                GoogleFonts.poppins(color: AppColors.accentColor, fontSize: 18),
+          ),
+          onTap: () {
+            Navigator.pop(context);
+            Navigator.pushNamed(context, 'showBirthList');
+          },
+        ),
+      ],
     );
   }
 }
